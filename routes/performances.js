@@ -41,7 +41,7 @@ router.route("/update/:id").post((request, response) => {
             performance.price = Number(request.body.price);
             performance.date = Date.parse(request.body.date);
             performance.image = request.body.image;
-            performance.admin = request.body.admin;
+            // performance.admin = request.body.admin;
 
 
             performance.save()
