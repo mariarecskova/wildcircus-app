@@ -9,6 +9,11 @@ const performanceSchema = new Schema({
     },
     description: {
         type: String,
+        required: true,
+    },
+
+    duration: {
+        type: Number,
         required: true
     },
 
@@ -17,14 +22,19 @@ const performanceSchema = new Schema({
         required: true
     },
 
-    // image: {
-    //     type: String,
-    //     required: true
-    // },
+    image: {
+        type: String,
+        required: true
+    },
 
     date: {
         type: Date,
         required: true
+    },
+
+    admin: {
+        type: Schema.Types.ObjectId,
+        ref: "User" //here I am referring to the User schema
     }
 });
 module.exports = mongoose.model("Performance", performanceSchema);
