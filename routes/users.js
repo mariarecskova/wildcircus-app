@@ -6,19 +6,18 @@ router.route("/").get((request, response) => {
         .then(users => response.json(users))
         .catch(err => response.status(400).json("error: " + err));
 });
-router.route("/add").post((request, response) => {
+router.route("/register").post((request, response) => {
     const username = request.body.username;
-    // const password = request.body.password;
-    const createdPerformances = request.body.createdPerformances;
+    const password = request.body.password;
 
-
-    const newUser = new User({ username, createdPerformances }); // with posting this we are creating a new instance
+    const newUser = new User({ username, password });
 
     newUser.save() //then we are saving it
         .then(() => response.json("user added"))
         .catch(err => response.status(400).json("error: " + err));
 
 });
+
 
 router.route("/:id").get((request, response) => {
     User.findById(request.params.id)
@@ -34,9 +33,7 @@ router.route("/:id").delete((request, response) => {
 router.route("/update/:id").post((request, response) => {
     User.findById(request.params.id)
         .then(user => {
-            user.userName = request.body.userName;
-            user.createdPerformances = request.body.createdPerformances;
-
+            user.userName = request.body.username;
 
             user.save()
                 .then(() => response.json("user updated"))
