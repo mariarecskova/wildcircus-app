@@ -14,8 +14,6 @@ router.post("/register", (request, response) => {
     newUser.save()
         .then((user) => {
             response.status(201).json({ userId: user._id, username: user.username });
-            // Don't forget to send the write http status code everytime ;) 201 = created
-            // if you don't want to find them you can use httpstatus package ;) 
         })
         .catch(err => response.status(400).json("error: " + err));
 

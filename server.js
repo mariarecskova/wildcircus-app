@@ -16,11 +16,11 @@ connection.once("open", () => {
     console.log("MongoDB datababase connection established");
 })
 
-const usersRouter = require("./routes/users");
-const performancesRouter = require("./routes/performances");
+const usersRouter = require("./routes/users.routes");
+const performancesRouter = require("./routes/performances.routes");
 
-app.use("/users", usersRouter);
-app.use("/performances", performancesRouter);
+app.use("/users/routes", usersRouter);
+app.use("/performances/routes", performancesRouter);
 
 
 app.listen(port, () => { //this is what starts the server
